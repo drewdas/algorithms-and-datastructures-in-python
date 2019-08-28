@@ -13,7 +13,7 @@ import unittest
 
 def merge_lists(list1, list2):
     sorted_list_length = len(list1) + len(list2)
-    sorted_list = [None] * sorted_list_length    
+    sorted_list = [None] * sorted_list_length
 
     current_list1_idx = 0
     current_list2_idx = 0
@@ -22,8 +22,10 @@ def merge_lists(list1, list2):
         is_list1_exhausted = False
         is_list2_exhausted = False
 
+        # check if list1 is exhausted
         if current_list1_idx >= len(list1):
             is_list1_exhausted = True
+        # check if list2 is exhausted
         if current_list2_idx >= len(list2):
             is_list2_exhausted = True
 

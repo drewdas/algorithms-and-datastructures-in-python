@@ -1,8 +1,10 @@
-# Algorithms and Data Structures in Python
+# Algorithms and Data Structures implemented in Python
 
 ## Index
 
 ### Arrays and Strings
+- Merge Sorted Array
+- Cafe Orders
 
 ### Searching and Sorting Algorithms
 
