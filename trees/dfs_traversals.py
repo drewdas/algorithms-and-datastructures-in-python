@@ -23,6 +23,25 @@ def traverse_inorder(node, arr):
             traverse_inorder(node.right, arr)
     return arr
 
+def traverse_inorder_iterative(tree_root):
+    if tree_root is None:
+       return None
+    
+    result = []
+    stack = []
+    current = tree_root
+    while True:
+        if current:
+            stack.append(current)
+            current = current.left
+        elif stack:
+            current = stack.pop()
+            result.append(current.value)
+            current = current.right
+        else:
+            break
+    return result
+
 
 # Preorder Traversal
 # Root -> Left -> Right
@@ -36,6 +55,32 @@ def traverse_preorder(node, arr):
             traverse_preorder(node.right, arr)
     return arr
 
+def traverse_preorder_iterative(node):
+    result = []
+    nodeStack = [] 
+    nodeStack.append(node) 
+  
+    #  Pop all items one by one. Do following for every popped item 
+    #   a) print it 
+    #   b) push its right child 
+    #   c) push its left child 
+    # Note that right child is pushed first so that left 
+    # is processed first */ 
+    while nodeStack: 
+          
+        # Pop the top item from stack and append it
+        current_node = nodeStack.pop()
+        result.append(current_node.value)
+          
+        # Push right and left children of the popped node 
+        # to stack 
+        if current_node.right is not None: 
+            nodeStack.append(current_node.right) 
+        if current_node.left is not None: 
+            nodeStack.append(current_node.left) 
+    return result
+
+
 # Postorder Traversal
 # Left -> Right -> Root 
 # [12, 19, 15, 32, 21, 27, 22]
@@ -47,6 +92,7 @@ def traverse_postorder(node, arr):
             traverse_preorder(node.right, arr)
         arr.append(node.value)
     return arr
+
 
 class BinaryTree:
     def __init__(self, value):
@@ -83,11 +129,23 @@ class TestCase(unittest.TestCase):
         traverse_inorder(node, result)
         expected = [12, 15, 19, 20, 21, 22, 27, 32]
         self.assertEqual(result, expected)
+
+    def test_inorder_iterative(self):
+        node = create_tree()
+        result = traverse_inorder_iterative(node)
+        expected = [12, 15, 19, 20, 21, 22, 27, 32]
+        self.assertEqual(result, expected)
     
     def test_preorder(self):
         node = create_tree()
         result = []
         traverse_preorder(node, result)
+        expected = [20, 15, 12, 19, 22, 21, 27, 32]
+        self.assertEqual(result, expected)
+
+    def test_preorder_iterative(self):
+        node = create_tree()
+        result = traverse_preorder_iterative(node)
         expected = [20, 15, 12, 19, 22, 21, 27, 32]
         self.assertEqual(result, expected)
     
