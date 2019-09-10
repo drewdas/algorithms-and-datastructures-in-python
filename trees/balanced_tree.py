@@ -61,11 +61,6 @@ def is_balanced(root):
     
     return True
 
-                 
-
-
-
-
 class TestCase(unittest.TestCase):
     
     def test_full_tree(self):

@@ -57,8 +57,8 @@ def traverse_preorder(node, arr):
 
 def traverse_preorder_iterative(node):
     result = []
-    nodeStack = [] 
-    nodeStack.append(node) 
+    node_stack = [] 
+    node_stack.append(node) 
   
     #  Pop all items one by one. Do following for every popped item 
     #   a) print it 
@@ -66,18 +66,18 @@ def traverse_preorder_iterative(node):
     #   c) push its left child 
     # Note that right child is pushed first so that left 
     # is processed first */ 
-    while nodeStack: 
+    while node_stack: 
           
         # Pop the top item from stack and append it
-        current_node = nodeStack.pop()
+        current_node = node_stack.pop()
         result.append(current_node.value)
           
         # Push right and left children of the popped node 
         # to stack 
         if current_node.right is not None: 
-            nodeStack.append(current_node.right) 
+            node_stack.append(current_node.right) 
         if current_node.left is not None: 
-            nodeStack.append(current_node.left) 
+            node_stack.append(current_node.left) 
     return result
 
 
